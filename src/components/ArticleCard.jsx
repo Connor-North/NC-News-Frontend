@@ -12,6 +12,15 @@ function ArticleCard({ article }) {
       <p>
         {article.votes} votes | {article.comment_count} comments
       </p>
+      <p>
+        {new Date(article.created_at).toLocaleDateString("en-GB", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+          hour: "2-digit",
+          minute: "2-digit",
+        })}
+      </p>
       {article.article_img_url && (
         <img
           src={article.article_img_url}
