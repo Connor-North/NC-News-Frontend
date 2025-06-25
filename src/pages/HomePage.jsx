@@ -1,4 +1,4 @@
-import { useDebugValue, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ArticleCard from "../components/ArticleCard";
 
 function HomePage() {
@@ -32,7 +32,7 @@ function HomePage() {
       <h1>Articles</h1>
       <ul>
         {articles.map((article) => {
-          <ArticleCard key={article.article_id} article={article} />;
+          return <ArticleCard key={article.article_id} article={article} />;
         })}
       </ul>
     </main>
