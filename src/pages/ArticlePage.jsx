@@ -29,6 +29,7 @@ function ArticlePage() {
   return (
     <article>
       <h1>{article.title}</h1>
+      <p>Topic: {article.topic}</p>
       <p>Author:{article.author}</p>
       <p>
         Published:{" "}
@@ -41,7 +42,9 @@ function ArticlePage() {
         })}
       </p>
       <p>{article.body}</p>
-      <p>{article.votes} votes</p>
+      <p>
+        {article.votes} votes | {article.comment_count} comments
+      </p>
       {article.article_img_url && (
         <img
           src={article.article_img_url}
