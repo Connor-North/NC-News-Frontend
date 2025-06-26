@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import CommentsList from "../components/CommentsList";
 
 function ArticlePage() {
   const { article_id } = useParams();
@@ -51,6 +52,7 @@ function ArticlePage() {
           alt={`Image for article titled '${article.title}'`}
         />
       )}
+      <CommentsList />
     </article>
   );
 }
