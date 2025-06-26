@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function ArticleCard({ article }) {
   return (
-    <>
+    <li className="article-card">
       <h2>
         <Link to={`/articles/${article.article_id}`}>{article.title}</Link>
       </h2>
@@ -27,7 +27,7 @@ function ArticleCard({ article }) {
           alt={`Thumbnail for '${article.title}'`}
         />
       )}
-    </>
+    </li>
   );
 }
 
