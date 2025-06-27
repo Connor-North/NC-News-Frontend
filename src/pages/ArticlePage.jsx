@@ -2,12 +2,18 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import CommentsList from "../components/CommentsList";
 import VoteButtons from "../components/VoteButtons";
+import CommentForm from "../components/CommentForm";
 
 function ArticlePage() {
   const { article_id } = useParams();
   const [article, setArticle] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [comments, setComments] = useState([]);
+
+  const handleNewComment = (newComment) => {
+    setComments((curr) => [newComment, ...curr]);
+  };
 
   useEffect(() => {
     fetch(`https://nc-news-v7di.onrender.com/api/articles/${article_id}`)
@@ -57,6 +63,10 @@ function ArticlePage() {
           alt={`Image for article titled '${article.title}'`}
         />
       )}
+      <CommentForm
+        article_id={article.article_id}
+        onCommentPosted={handleNewComment}
+      />
       <CommentsList />
     </article>
   );
