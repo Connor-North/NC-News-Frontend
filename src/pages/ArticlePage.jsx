@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import CommentsList from "../components/CommentsList";
+import VoteButtons from "../components/VoteButtons";
 
 function ArticlePage() {
   const { article_id } = useParams();
@@ -43,9 +44,13 @@ function ArticlePage() {
         })}
       </p>
       <p>{article.body}</p>
-      <p>
-        {article.votes} votes | {article.comment_count} comments
-      </p>
+
+      <VoteButtons
+        article_id={article.article_id}
+        initialVotes={article.votes}
+      />
+
+      <p>{article.comment_count} comments</p>
       {article.article_img_url && (
         <img
           src={article.article_img_url}
