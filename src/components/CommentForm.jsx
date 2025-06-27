@@ -22,7 +22,7 @@ function CommentForm({ article_id, onCommentPosted }) {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          username: "Connor",
+          username: "jessjelly",
           body: body.trim(),
         }),
       }
