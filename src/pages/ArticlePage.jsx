@@ -16,13 +16,24 @@ function ArticlePage() {
   };
 
   useEffect(() => {
-    fetch(`https://nc-news-v7di.onrender.com/api/articles/${article_id}`)
-      .then((res) => {
+    setIsLoading(true);
+    Promise.all([
+      fetch(
+        `https://nc-news-v7di.onrender.com/api/articles/${article_id}`
+      ).then((res) => {
         if (!res.ok) throw new Error("Failed to fetch article");
         return res.json();
-      })
-      .then((data) => {
-        setArticle(data.article);
+      }),
+      fetch(
+        `https://nc-news-v7di.onrender.com/api/articles/${article_id}/comments`
+      ).then((res) => {
+        if (!res.ok) throw new Error("Failed to fetch comments");
+        return res.json();
+      }),
+    ])
+      .then(([articleData, commentsData]) => {
+        setArticle(articleData.article);
+        setComments(commentsData.comments);
         setIsLoading(false);
       })
       .catch((err) => {
@@ -67,7 +78,7 @@ function ArticlePage() {
         article_id={article.article_id}
         onCommentPosted={handleNewComment}
       />
-      <CommentsList />
+      <CommentsList comments={comments} />
     </article>
   );
 }

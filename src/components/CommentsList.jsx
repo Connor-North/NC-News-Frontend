@@ -1,32 +1,5 @@
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-
-function CommentsList() {
-  const { article_id } = useParams();
-  const [comments, setComments] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    fetch(
-      `https://nc-news-v7di.onrender.com/api/articles/${article_id}/comments`
-    )
-      .then((res) => {
-        if (!res.ok) throw new Error("Could not load comments");
-        return res.json();
-      })
-      .then((data) => {
-        setComments(data.comments);
-        setIsLoading(false);
-      })
-      .catch((err) => {
-        setError(err.message);
-        setIsLoading(false);
-      });
-  }, [article_id]);
-
-  if (isLoading) return <p>Loading comments...</p>;
-  if (error) return <p>Error: {error}</p>;
+function CommentsList({ comments }) {
+  if (!comments) return <p>Loading comments...</p>;
   if (comments.length === 0) return <p>No comments yet..</p>;
 
   return (
