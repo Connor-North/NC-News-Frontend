@@ -7,11 +7,11 @@ import NotFoundPage from "./pages/NotFoundPage";
 import Header from "./components/Header";
 import AllArticles from "./pages/AllArticles";
 import AllTopics from "./pages/AllTopics";
-import { Container, CssBaseline } from "@mui/material";
+import { Container, CssBaseline, Box } from "@mui/material";
 
 function App() {
   return (
-    <>
+    <Box sx={{ bgcolor: "background.default", minHeight: "100vh" }}>
       <CssBaseline />
       <Header />
       <Container maxWidth="md" sx={{ mt: 4 }}>
@@ -24,7 +24,7 @@ function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Container>
-    </>
+    </Box>
   );
 }
 

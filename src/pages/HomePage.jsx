@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import ArticleCard from "../components/ArticleCard";
-import { Container, Typography, Box, Paper } from "@mui/material";
+import { Container, Typography, Grid, Paper } from "@mui/material";
 
 function HomePage() {
   const [articles, setArticles] = useState([]);
@@ -32,13 +32,15 @@ function HomePage() {
     <Paper sx={{ backgroundColor: "#f4f6f8", minHeight: "100vh", py: 4 }}>
       <Container>
         <Typography variant="h4" sx={{ mb: 3 }}>
-          Articles
+          All Articles
         </Typography>
-        <Box component="ul" sx={{ listStyle: "none", p: 0, m: 0 }}>
+        <Grid container spacing={3} justifyContent="center">
           {articles.map((article) => (
-            <ArticleCard key={article.article_id} article={article} />
+            <Grid item xs={12} sm={6} md={4} key={article.article_id}>
+              <ArticleCard article={article} />
+            </Grid>
           ))}
-        </Box>
+        </Grid>
       </Container>
     </Paper>
   );

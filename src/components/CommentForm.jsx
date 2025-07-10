@@ -1,3 +1,4 @@
+import { Box, TextField, Button, Typography } from "@mui/material";
 import { useState } from "react";
 
 function CommentForm({ article_id, onCommentPosted }) {
@@ -45,17 +46,26 @@ function CommentForm({ article_id, onCommentPosted }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <textarea
-        value={body}
-        onChange={(e) => setBody(e.target.value)}
-        placeholder="Write your comment..."
-        rows="4"
-        disabled={isPosting}
-      />
-      <button type="submit" disabled={isPosting}>
-        {isPosting ? "Posting..." : "Post Comment"}
-      </button>
-      {error && <p className="error">{error}</p>}
+      <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+        <TextField
+          label="Write your comment..."
+          multiline
+          rows={4}
+          value={body}
+          onChange={(e) => setBody(e.target.value)}
+          placeholder="Write your comment..."
+          disabled={isPosting}
+          fullWidth
+        />
+        <Button type="submit" variant="contained" disabled={isPosting}>
+          {isPosting ? "Posting..." : "Post Comment"}
+        </Button>
+        {error && (
+          <Typography color="error" variant="body2">
+            {error}
+          </Typography>
+        )}
+      </Box>
     </form>
   );
 }

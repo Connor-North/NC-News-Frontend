@@ -1,3 +1,4 @@
+import { Card, CardContent, Typography, Box } from "@mui/material";
 function CommentsList({ comments }) {
   if (!comments) return <p>Loading comments...</p>;
   if (comments.length === 0) return <p>No comments yet..</p>;
@@ -5,12 +6,18 @@ function CommentsList({ comments }) {
   return (
     <section>
       <h2>Comments</h2>
-      <ul className="comments-list">
-        {comments.map((comment) => {
-          return (
-            <li key={comment.comment_id} className="comment-card">
-              <p>
-                {comment.author} -{" "}
+      {comments.map((comment) => (
+        <Card key={comment.comment_id} variant="outlined" sx={{ mb: 2 }}>
+          <CardContent>
+            <Box
+              display="flex"
+              justifyContent="space-between"
+              alignItems="center"
+            >
+              <Typography variant="subtitle2" color="text.secondary">
+                {comment.author}
+              </Typography>
+              <Typography variant="caption" color="text.secondary">
                 {new Date(comment.created_at).toLocaleDateString("en-GB", {
                   year: "numeric",
                   month: "long",
@@ -18,13 +25,17 @@ function CommentsList({ comments }) {
                   hour: "2-digit",
                   minute: "2-digit",
                 })}
-              </p>
-              <p>{comment.body}</p>
-              <p>{comment.votes} votes</p>
-            </li>
-          );
-        })}
-      </ul>
+              </Typography>
+            </Box>
+            <Typography variant="body1" sx={{ mt: 1 }}>
+              {comment.body}
+            </Typography>
+            <Typography variant="caption" color="text.secondary">
+              {comment.votes} votes
+            </Typography>
+          </CardContent>
+        </Card>
+      ))}
     </section>
   );
 }
