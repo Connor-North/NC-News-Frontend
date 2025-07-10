@@ -1,12 +1,61 @@
-# React + Vite
+# NC News Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the **React frontend** for NC News — a Reddit-style article app where users can browse topics, read articles, vote, and comment.
 
-Currently, two official plugins are available:
+🟢 Live Site: [https://ncnewscn.netlify.app](https://ncnewscn.netlify.app)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🛠 Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React (with Vite)
+- React Router
+- Material UI (MUI)
+- Deployed via Netlify
+
+---
+
+## ⚙️ Setup Instructions
+
+1. **Clone the repository**
+
+   ```bash
+   git clone https://github.com/Connor-North/NC-News-Frontend.git
+   cd NC-News-Frontend
+   npm install
+   ```
+
+2. **Start the development server**
+
+   ```bash
+   npm run dev
+   ```
+
+   The server should now be running locally.
+
+---
+
+## 🔗 Backend API
+
+This app communicates with the backend API hosted at:  
+[https://nc-news-v7di.onrender.com](https://nc-news-v7di.onrender.com)
+
+Backend repo: [https://github.com/Connor-North/NC-News-Backend](https://github.com/Connor-North/NC-News-Backend)
+
+---
+
+## 📁 Project Structure
+
+- `/pages` – route views (HomePage, ArticlePage, etc.)
+- `/components` – reusable UI components (ArticleCard, CommentForm, VoteButtons,etc.)
+- `App.jsx` – main app structure and routes
+- `main.jsx` – entry point
+
+---
+
+## ✨ Features
+
+- Browse all articles or filter by topic
+- View full article details and comments
+- Post comments and vote on articles
+- Graceful error handling and loading states
